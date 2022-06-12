@@ -1,21 +1,24 @@
 <template>
-  <div class="sidebar-panel">
-    <div class="container">
-      <div class="head">
-        <h3>
-          {{ props.title }}
-        </h3>
-        <slot name="right" />
-      </div>
-      <div class="content">
-        <slot />
+  <div>
+    <div class="body-panel">
+      <div class="container">
+        <div class="head">
+          <h1>
+            {{ props.title }}
+          </h1>
+        </div>
+        <div class="content">
+          <slot />
+        </div>
       </div>
     </div>
+    <AppFooter />
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue'
+import AppFooter from '@/components/AppFooter'
 
 const props = defineProps({
   title: {
@@ -26,20 +29,18 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
-.sidebar-panel {
-  margin-bottom: 10px;
+.body-panel {
+  width: 730px;
+  margin: 0 10px 10px 10px;
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 0 0 20px 0px #d8d8d8;
   .container {
     padding: 20px;
     .head {
+      margin: 20px 0;
       display: flex;
-      align-items: flex-end;
-      line-height: 20px;
-      h3 {
-        flex: 1;
-      }
+      justify-content: center;
     }
     .content {
       margin-top: 12px;

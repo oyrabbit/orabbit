@@ -4,14 +4,15 @@
     <AppSidebar />
     <router-view />
   </main>
-  <AppFooter />
+  <!-- <AppFooter /> -->
+
   <!-- <footer>底部</footer> -->
 </template>
 
 <script setup>
 import Header from '@/components/AppHeader'
 import AppSidebar from '@/components/AppSidebar'
-import AppFooter from '@/components/AppFooter'
+// import AppFooter from '@/components/AppFooter'
 // import { computed, onBeforeMount } from 'vue'
 // import { useStore } from 'vuex'
 // import { useRouter } from 'vue-router'
@@ -32,6 +33,6 @@ import AppFooter from '@/components/AppFooter'
 main {
   display: flex;
   width: 1280px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 </style>

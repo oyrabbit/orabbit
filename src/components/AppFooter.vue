@@ -1,7 +1,7 @@
 <template>
   <footer class="app-footer">
     <div class="container">
-      <p>粤ICP备18056223号</p>
+      <p>浙ICP备18056223号</p>
       <p>Copyright © 2022 - All right reserved</p>
     </div>
   </footer>
@@ -10,8 +10,9 @@
 <style scoped lang="scss">
 .app-footer {
   height: 100px;
-
+  margin-top: 50px;
   .container {
+    width: 500px;
     text-align: center;
     opacity: 0.5;
     p {

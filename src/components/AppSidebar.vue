@@ -82,9 +82,8 @@
 .app-sidebar {
   width: 230px;
   height: auto;
-  margin-top: 15px;
   .side-center {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 12px;
     background-color: #fff;
     box-shadow: 0 0 20px 0px #d8d8d8;

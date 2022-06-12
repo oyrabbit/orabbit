@@ -5,11 +5,7 @@ export default {
     return {
       // 用户信息
       profile: {
-        id: '',
-        avatar: '',
-        nickname: '',
-        account: '',
-        mobile: '',
+        username: '',
         token: '',
       },
     }

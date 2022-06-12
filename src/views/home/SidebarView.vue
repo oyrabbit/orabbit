@@ -98,7 +98,6 @@
 .app-sidebar-right {
   width: 300px;
   height: auto;
-  margin-top: 15px;
   #sider1,
   #sider2 {
     .right {

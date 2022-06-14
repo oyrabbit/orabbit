@@ -84,12 +84,7 @@
           <p>出自：《青玉案·元夕》</p>
         </div>
       </SidebarPanel>
-      <SidebarPanel id="sider4" title="网站信息">
-        <div class="info">
-          <div><span>页面响应时间：</span><span>56ms</span></div>
-          <div><span>网站运行时间：</span><span>445天</span></div>
-        </div>
-      </SidebarPanel>
+      <SideShort></SideShort>
     </div>
   </aside>
 </template>

@@ -12,13 +12,11 @@
         </div>
       </div>
     </div>
-    <AppFooter />
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue'
-import AppFooter from '@/components/AppFooter'
 
 const props = defineProps({
   title: {

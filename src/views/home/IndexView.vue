@@ -227,7 +227,6 @@
         </div>
       </div>
       <div class="more"><AppButton type="primary">加载更多</AppButton></div>
-      <AppFooter />
     </div>
   </div>
   <AppSidebarRight />
@@ -235,7 +234,7 @@
 
 <script setup>
 import AppSidebarRight from './SidebarView'
-import AppFooter from '@/components/AppFooter'
+// import AppFooter from '@/components/AppFooter'
 </script>
 
 <style lang="scss" scoped>

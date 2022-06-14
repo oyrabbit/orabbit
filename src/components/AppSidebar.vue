@@ -15,64 +15,60 @@
       </div>
 
       <SidebarPanel id="sider2" title="导航">
-        <ul>
-          <li class="active">
-            <iconpark-icon name="home" size="1.2em"></iconpark-icon
-            ><span>首页</span>
-          </li>
-          <li>
-            <iconpark-icon name="message-one" size="1.2em"></iconpark-icon
-            ><span>留言</span>
-          </li>
-          <li>
-            <iconpark-icon name="peoples" size="1.2em"></iconpark-icon
-            ><span>友链</span>
-          </li>
-          <li>
-            <iconpark-icon name="info" size="1.2em"></iconpark-icon
-            ><span>关于</span>
-          </li>
-          <li>
-            <iconpark-icon name="setting-config" size="1.2em"></iconpark-icon
-            ><span>管理</span>
-          </li>
-          <li>
-            <iconpark-icon name="github-one" size="1.2em"></iconpark-icon
-            ><span>GitHub</span>
-          </li>
-        </ul>
+        <router-link to="/" class="active">
+          <iconpark-icon name="home" size="1.2em"></iconpark-icon
+          ><span>首页</span>
+        </router-link>
+        <router-link to="/">
+          <iconpark-icon name="message-one" size="1.2em"></iconpark-icon
+          ><span>留言</span>
+        </router-link>
+        <router-link to="/">
+          <iconpark-icon name="peoples" size="1.2em"></iconpark-icon
+          ><span>友链</span>
+        </router-link>
+        <router-link to="/">
+          <iconpark-icon name="info" size="1.2em"></iconpark-icon
+          ><span>关于</span>
+        </router-link>
+        <router-link to="/admin">
+          <iconpark-icon name="setting-config" size="1.2em"></iconpark-icon
+          ><span>管理</span>
+        </router-link>
+        <router-link to="/">
+          <iconpark-icon name="github-one" size="1.2em"></iconpark-icon
+          ><span>GitHub</span>
+        </router-link>
       </SidebarPanel>
       <SidebarPanel id="sider1" title="分类">
-        <ul>
-          <li class="active"><span>全部</span><span>100</span></li>
-          <li><span>Vue</span><span>100</span></li>
-          <li><span>Vue</span><span>100</span></li>
-          <li><span>Vue</span><span>100</span></li>
-          <li><span>Vue</span><span>100</span></li>
-          <li><span>Vue</span><span>100</span></li>
-        </ul>
+        <router-link to="/" class="active"
+          ><span>全部</span><span>100</span></router-link
+        >
+        <router-link to="/"><span>Vue</span><span>100</span></router-link>
+        <router-link to="/"><span>Vue</span><span>100</span></router-link>
+        <router-link to="/"><span>Vue</span><span>100</span></router-link>
+        <router-link to="/"><span>Vue</span><span>100</span></router-link>
+        <router-link to="/"><span>Vue</span><span>100</span></router-link>
       </SidebarPanel>
       <SidebarPanel id="sider3" title="友链">
-        <ul>
-          <li>
-            <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
-          </li>
-          <li>
-            <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
-          </li>
-          <li>
-            <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
-          </li>
-          <li>
-            <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
-          </li>
-          <li>
-            <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
-          </li>
-          <li>
-            <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
-          </li>
-        </ul>
+        <router-link to="/">
+          <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
+        </router-link>
+        <router-link to="/">
+          <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
+        </router-link>
+        <router-link to="/">
+          <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
+        </router-link>
+        <router-link to="/">
+          <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
+        </router-link>
+        <router-link to="/">
+          <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
+        </router-link>
+        <router-link to="/">
+          <img src="@/assets/images/mao.png" alt="" /><span>阿里巴巴</span>
+        </router-link>
       </SidebarPanel>
     </div>
   </aside>
@@ -130,7 +126,7 @@
   #sider1,
   #sider2,
   #sider3 {
-    li {
+    a {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -152,7 +148,7 @@
   }
   #sider2,
   #sider3 {
-    li {
+    a {
       justify-content: unset;
       position: relative;
       span {
@@ -161,7 +157,7 @@
     }
   }
   #sider3 {
-    li {
+    a {
       img {
         width: 20px;
         border-radius: 50%;

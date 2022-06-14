@@ -20,7 +20,12 @@
             />
           </div>
           <div class="error" v-if="errors.username">
-            <iconpark-icon name="attention" color="#EE4343"></iconpark-icon
+            <iconpark-icon
+              name="attention"
+              stroke="#EE4343"
+              fill="#EE4343"
+              size="1.2em"
+            ></iconpark-icon
             >{{ errors.username }}
           </div>
         </div>
@@ -40,11 +45,12 @@
             >{{ errors.password }}
           </div>
         </div>
-        <AppButton type="primary" @click="login()" class="btn">登 录</AppButton>
+        <AppButton type="primary" @click.prevent.self="login()" class="btn"
+          >登 录</AppButton
+        >
       </Form>
     </div></BodyPanel
   >
-
   <AppSidebarRight />
 </template>
 
@@ -128,17 +134,18 @@ const login = async () => {
         }
         input {
           padding-left: 44px;
-          // border: 1px solid #cfcdcd;
           background-color: $bgColor;
           border-radius: 12px;
           height: 45px;
           line-height: 45px;
           width: 100%;
           &.error {
+            border: 1px solid #cfcdcd;
             border-color: $priceColor;
           }
           &.active,
           &:focus {
+            border: 1px solid #cfcdcd;
             border-color: $Color;
           }
         }
@@ -151,7 +158,6 @@ const login = async () => {
         display: flex;
         align-items: center;
         iconpark-icon {
-          font-size: 14px;
           margin-right: 2px;
         }
       }

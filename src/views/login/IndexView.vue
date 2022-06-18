@@ -103,7 +103,7 @@ const login = async () => {
         // 失败
         Message({
           type: 'error',
-          text: e.response.data.message || '登录失败',
+          text: e.response.data.error || '登录失败',
         })
       })
   }

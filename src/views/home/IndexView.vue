@@ -41,29 +41,26 @@
           </div>
         </div>
       </div>
-      <div class="article">
-        <div></div>
+      <div class="article" :key="item.id" v-for="item in articles">
+        <div :style="'background-image: url( ' + item.img + ')'"></div>
         <div>
-          <div>文章标题文章标题</div>
+          <div>{{ item.title }}</div>
           <div>
-            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+            {{ vContent(item.content) }}
           </div>
           <div>
             <div>
               <div>
-                <iconpark-icon name="folder-close"></iconpark-icon
-                ><span>Vue</span>
-              </div>
-              <div>
                 <iconpark-icon name="preview-open" size="1.2em"></iconpark-icon
-                ><span>111</span>
+                ><span>{{ item.view }}</span>
               </div>
               <div>
-                <iconpark-icon name="comment"></iconpark-icon><span>111</span>
+                <iconpark-icon name="comment"></iconpark-icon
+                ><span>{{ item.comment_count }}</span>
               </div>
               <div>
                 <iconpark-icon name="time"></iconpark-icon
-                ><span>2022-10-26</span>
+                ><span>{{ vDate(item.updated_time) }}</span>
               </div>
             </div>
             <div>
@@ -73,160 +70,19 @@
                 stroke=""
                 fill=""
               ></iconpark-icon
-              ><span>11</span>
+              ><span>{{ item.like }}</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="article">
-        <div></div>
-        <div>
-          <div>文章标题文章标题</div>
-          <div>
-            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-          </div>
-          <div>
-            <div>
-              <div>
-                <iconpark-icon name="folder-close"></iconpark-icon
-                ><span>Vue</span>
-              </div>
-              <div>
-                <iconpark-icon name="preview-open" size="1.2em"></iconpark-icon
-                ><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="comment"></iconpark-icon><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="time"></iconpark-icon
-                ><span>2022-10-26</span>
-              </div>
-            </div>
-            <div>
-              <iconpark-icon
-                name="like"
-                size="1.5em"
-                stroke=""
-                fill=""
-              ></iconpark-icon
-              ><span>11</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="article">
-        <div></div>
-        <div>
-          <div>文章标题文章标题</div>
-          <div>
-            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-          </div>
-          <div>
-            <div>
-              <div>
-                <iconpark-icon name="folder-close"></iconpark-icon
-                ><span>Vue</span>
-              </div>
-              <div>
-                <iconpark-icon name="preview-open" size="1.2em"></iconpark-icon
-                ><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="comment"></iconpark-icon><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="time"></iconpark-icon
-                ><span>2022-10-26</span>
-              </div>
-            </div>
-            <div>
-              <iconpark-icon
-                name="like"
-                size="1.5em"
-                stroke=""
-                fill=""
-              ></iconpark-icon
-              ><span>11</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="article">
-        <div></div>
-        <div>
-          <div>文章标题文章标题</div>
-          <div>
-            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-          </div>
-          <div>
-            <div>
-              <div>
-                <iconpark-icon name="folder-close"></iconpark-icon
-                ><span>Vue</span>
-              </div>
-              <div>
-                <iconpark-icon name="preview-open" size="1.2em"></iconpark-icon
-                ><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="comment"></iconpark-icon><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="time"></iconpark-icon
-                ><span>2022-10-26</span>
-              </div>
-            </div>
-            <div>
-              <iconpark-icon
-                name="like"
-                size="1.5em"
-                stroke=""
-                fill=""
-              ></iconpark-icon
-              ><span>11</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="article">
-        <div></div>
-        <div>
-          <div>文章标题文章标题</div>
-          <div>
-            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-          </div>
-          <div>
-            <div>
-              <div>
-                <iconpark-icon name="folder-close"></iconpark-icon
-                ><span>Vue</span>
-              </div>
-              <div>
-                <iconpark-icon name="preview-open" size="1.2em"></iconpark-icon
-                ><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="comment"></iconpark-icon><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="time"></iconpark-icon
-                ><span>2022-10-26</span>
-              </div>
-            </div>
-            <div>
-              <iconpark-icon
-                name="like"
-                size="1.5em"
-                stroke=""
-                fill=""
-              ></iconpark-icon
-              ><span>11</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="more"><AppButton type="primary">加载更多</AppButton></div>
+
+      <AppInfiniteLoading
+        :loading="loading"
+        :finished="finished"
+        @infinite="getData"
+      />
+
+      <!-- <div class="more"><AppButton type="primary">加载更多</AppButton></div> -->
     </div>
   </div>
   <AppSidebarRight />
@@ -234,7 +90,54 @@
 
 <script setup>
 import AppSidebarRight from './SidebarView'
-// import AppFooter from '@/components/AppFooter'
+import { ref } from 'vue'
+import { GetArticle } from '@/api/user'
+
+import moment from 'moment'
+moment.locale('zh-cn')
+
+const loading = ref(false)
+const finished = ref(false)
+const articles = ref([])
+
+let reqParams = {
+  pageNum: 1,
+  pageSize: 8,
+}
+// 获取数据函数
+const getData = () => {
+  loading.value = true
+  GetArticle(reqParams).then(({ article_list }) => {
+    if (article_list.length) {
+      articles.value.push(...article_list)
+      reqParams.pageNum++
+    } else {
+      // 加载完毕
+      finished.value = true
+    }
+    // 请求结束
+    loading.value = false
+  })
+}
+// GetArticle().then((data) => {
+//   articles.value = data.article_list
+// })
+
+const vContent = (content) => {
+  return content.replace(/#|-|>|-|\*/g, '').trim()
+}
+
+const vDate = (date) => {
+  const thistime = moment(date).format('YYYY-MM-DD HH:mm:ss')
+  const nowtime = moment(Date()).format('YYYY-MM-DD HH:mm:ss')
+  const timespan = moment(nowtime).diff(thistime, 'day')
+
+  if (timespan <= 10) {
+    return moment(thistime).fromNow()
+  } else {
+    return thistime
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -306,6 +209,10 @@ import AppSidebarRight from './SidebarView'
           div {
             margin-right: 20px;
             display: flex;
+            &:first-child,
+            &:nth-child(2) {
+              width: 50px;
+            }
             span {
               margin-left: 3px;
             }

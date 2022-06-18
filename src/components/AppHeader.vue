@@ -64,6 +64,7 @@
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import Message from '@/components/library/Message'
 
 const isdisplay = ref(1)
 const store = useStore()
@@ -79,6 +80,7 @@ const router = useRouter()
 const logout = () => {
   store.commit('user/setUser', {})
   router.push('/login')
+  Message({ type: 'success', text: '退出成功' })
 }
 </script>
 <style scoped lang="scss">
@@ -130,8 +132,6 @@ const logout = () => {
       iconpark-icon {
         padding: 0 10px;
         opacity: 0.7;
-        &:nth-child(2) {
-        }
         &:last-child::after {
           content: '99';
           text-align: center;

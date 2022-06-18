@@ -1,7 +1,9 @@
 <template>
   <footer class="app-footer">
     <div class="container">
-      <p>浙ICP备18056223号</p>
+      <a href="https://beian.miit.gov.cn/" target="_blank"
+        >浙ICP备2022017314号-1</a
+      >
       <p>Copyright © 2022 - All right reserved</p>
     </div>
   </footer>

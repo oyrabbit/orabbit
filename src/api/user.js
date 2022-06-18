@@ -4,8 +4,24 @@ export const Login = ({ username, password }) => {
   return request('/login', 'post', { username, password })
 }
 
-export const Getmeasures = () => {
-  return request('/measures', 'get')
+export const GetTags = () => {
+  return request('/tags', 'get')
+}
+
+export const AddTag = ({ name }) => {
+  return request('/tags', 'post', { name })
+}
+
+export const DelTag = (tagId) => {
+  return request(`/tags/${tagId}`, 'delete')
+}
+
+export const CreateArticle = ({ title, type, tags, img, content }) => {
+  return request('/article', 'post', { title, type, tags, img, content })
+}
+
+export const GetArticle = (params) => {
+  return request('/article', 'get', params)
 }
 
 export const Gettimetable = () => {

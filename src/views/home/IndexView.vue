@@ -1,52 +1,22 @@
 <template>
   <div class="index">
     <div class="container">
-      <div class="article">
-        <div></div>
+      <div class="article" :key="item.id" v-for="(item, index) in topArticles">
+        <div
+          :style="'background-image: url( ' + item.img + ');cursor: pointer;'"
+          @click="() => imgLink(item._id)"
+        ></div>
         <div>
           <div>
-            <div>置顶</div>
-            文章标题文章标题
+            <div :class="{ display: !item.is_top }">置顶</div>
+            <router-link :to="'/article/' + item._id">{{
+              item.title
+            }}</router-link>
           </div>
           <div>
-            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-          </div>
-          <div>
-            <div>
-              <div>
-                <iconpark-icon name="folder-close"></iconpark-icon
-                ><span>Vue</span>
-              </div>
-              <div>
-                <iconpark-icon name="preview-open" size="1.2em"></iconpark-icon
-                ><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="comment"></iconpark-icon><span>111</span>
-              </div>
-              <div>
-                <iconpark-icon name="time"></iconpark-icon
-                ><span>2022-10-26</span>
-              </div>
-            </div>
-            <div>
-              <iconpark-icon
-                name="like"
-                size="1.5em"
-                stroke="red"
-                fill="red"
-              ></iconpark-icon
-              ><span>11</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="article" :key="item.id" v-for="item in articles">
-        <div :style="'background-image: url( ' + item.img + ')'"></div>
-        <div>
-          <div>{{ item.title }}</div>
-          <div>
-            {{ vContent(item.content) }}
+            <router-link :to="'/article/' + item._id">{{
+              vContent(item.content)
+            }}</router-link>
           </div>
           <div>
             <div>
@@ -63,12 +33,69 @@
                 ><span>{{ vDate(item.updated_time) }}</span>
               </div>
             </div>
-            <div>
+            <div @click="like_top(index, item._id)">
               <iconpark-icon
+                :class="{ display: item.is_like }"
                 name="like"
                 size="1.5em"
-                stroke=""
-                fill=""
+              ></iconpark-icon>
+              <iconpark-icon
+                :class="{ display: !item.is_like }"
+                name="like"
+                size="1.5em"
+                stroke="red"
+                fill="red"
+              ></iconpark-icon
+              ><span>{{ item.like }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article" :key="item.id" v-for="(item, index) in articles">
+        <div
+          :style="'background-image: url( ' + item.img + ');cursor: pointer;'"
+          @click="() => imgLink(item._id)"
+        ></div>
+        <div>
+          <div>
+            <div :class="{ display: !item.is_top }">置顶</div>
+            <router-link :to="'/article/' + item._id">{{
+              item.title
+            }}</router-link>
+          </div>
+          <div>
+            <router-link :to="'/article/' + item._id">{{
+              vContent(item.content)
+            }}</router-link>
+          </div>
+          <div>
+            <div>
+              <div>
+                <iconpark-icon name="preview-open" size="1.2em"></iconpark-icon
+                ><span>{{ item.view }}</span>
+              </div>
+              <div>
+                <iconpark-icon name="comment"></iconpark-icon
+                ><span>{{ item.comment_count }}</span>
+              </div>
+              <div>
+                <iconpark-icon name="time"></iconpark-icon
+                ><span>{{ vDate(item.updated_time) }}</span>
+              </div>
+            </div>
+            <div @click="like(index, item._id)">
+              <iconpark-icon
+                :class="{ display: item.is_like }"
+                name="like"
+                size="1.5em"
+              ></iconpark-icon>
+              <iconpark-icon
+                :class="{ display: !item.is_like }"
+                name="like"
+                size="1.5em"
+                stroke="red"
+                fill="red"
               ></iconpark-icon
               ><span>{{ item.like }}</span>
             </div>
@@ -91,25 +118,39 @@
 <script setup>
 import AppSidebarRight from './SidebarView'
 import { ref } from 'vue'
-import { GetArticle } from '@/api/user'
+import { GetArticles, GetTopArticles, UpdateArticleLike } from '@/api/user'
+import { useRouter } from 'vue-router'
 
 import moment from 'moment'
 moment.locale('zh-cn')
 
+const route = useRouter()
+
 const loading = ref(false)
 const finished = ref(false)
 const articles = ref([])
+const topArticles = ref([])
 
 let reqParams = {
   pageNum: 1,
   pageSize: 8,
 }
+
+const imgLink = (url) => {
+  route.push('/article/' + url)
+}
 // 获取数据函数
 const getData = () => {
   loading.value = true
-  GetArticle(reqParams).then(({ article_list }) => {
+  GetArticles(reqParams).then(({ article_list }) => {
     if (article_list.length) {
-      articles.value.push(...article_list)
+      const article_list2 = []
+      article_list
+        .filter((item) => item.is_top === 0)
+        .forEach((item) => {
+          article_list2.push({ ...item, is_like: 0 })
+        })
+      articles.value.push(...article_list2)
       reqParams.pageNum++
     } else {
       // 加载完毕
@@ -119,9 +160,40 @@ const getData = () => {
     loading.value = false
   })
 }
+
+// 获取置顶文章列表
+GetTopArticles().then(({ article_list }) => {
+  if (article_list.length) {
+    const article_list2 = []
+    article_list.forEach((item) => {
+      article_list2.push({ ...item, is_like: 0 })
+    })
+    topArticles.value.push(...article_list2)
+  }
+})
 // GetArticle().then((data) => {
 //   articles.value = data.article_list
 // })
+
+// 更新文章点赞数据
+const like = async (index, articleId) => {
+  articles.value[index].is_like === 0 &&
+    (await UpdateArticleLike({ type: 1, articleId: articleId }).then(
+      ({ article }) => {
+        articles.value[index] = { ...article, is_like: 1 }
+      }
+    ))
+}
+
+// 更新置顶文章点赞数据
+const like_top = async (index, articleId) => {
+  topArticles.value[index].is_like === 0 &&
+    (await UpdateArticleLike({ type: 1, articleId: articleId }).then(
+      ({ article }) => {
+        topArticles.value[index] = { ...article, is_like: 1 }
+      }
+    ))
+}
 
 const vContent = (content) => {
   return content.replace(/#|-|>|-|\*/g, '').trim()

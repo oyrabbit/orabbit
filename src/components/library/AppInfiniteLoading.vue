@@ -2,7 +2,7 @@
   <div class="app-infinite-loading" ref="target">
     <div class="loading" v-if="loading">
       <span class="img"></span>
-      <span class="text">加载中...</span>
+      <span class="text">玩命加载中...</span>
     </div>
     <div class="none" v-if="finished">
       <!-- <span class="img"></span> -->

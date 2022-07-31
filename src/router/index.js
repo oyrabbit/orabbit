@@ -7,6 +7,7 @@ const Login = () => import('@/views/login/IndexView')
 const Admin = () => import('@/views/AdminView')
 const adminIndex = () => import('@/views/admin/IndexView')
 const CreateView = () => import('@/views/admin/CreateView')
+const Article = () => import('@/views/article/IndexView')
 
 const routes = [
   {
@@ -15,6 +16,7 @@ const routes = [
     children: [
       { path: '/', component: Home },
       { path: '/login', component: Login },
+      { path: '/article/:articleId', component: Article },
     ],
   },
   {
@@ -40,7 +42,7 @@ const router = createRouter({
 
 // 导航守卫
 router.beforeEach((to, from, next) => {
-  // 需要登录的路由：地址是以 /member 开头
+  // 需要登录的路由：地址是以 /adnin 开头
   const { profile } = store.state.user
   if (!profile.token && to.path.startsWith('/admin')) {
     return next('/login?redirectUrl=' + encodeURIComponent(to.fullPath))

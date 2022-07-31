@@ -20,8 +20,24 @@ export const CreateArticle = ({ title, type, tags, img, content }) => {
   return request('/article', 'post', { title, type, tags, img, content })
 }
 
-export const GetArticle = (params) => {
-  return request('/article', 'get', params)
+export const GetArticles = (params) => {
+  return request('/articles', 'get', params)
+}
+
+export const GetTopArticles = () => {
+  return request('/articles_top', 'get')
+}
+
+export const UpdateArticleLike = (params) => {
+  return request('/article/like', 'put', params)
+}
+
+export const UpdateArticleView = (articleId) => {
+  return request('/article/view', 'put', { articleId: articleId })
+}
+
+export const GetArticle = (articleId) => {
+  return request(`/article/${articleId}`, 'get')
 }
 
 export const Gettimetable = () => {
